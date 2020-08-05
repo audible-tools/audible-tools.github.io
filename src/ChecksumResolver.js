@@ -11,6 +11,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 
+import Dropzone from 'react-dropzone'
+
 const useStyles = theme => ({
     paper: {
         marginTop: theme.spacing(8),
@@ -34,7 +36,7 @@ function Copyright() {
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
             <Link color="inherit" href="https://audible-tools.github.io/">
-                    audible-tools
+                audible-tools
         </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
@@ -85,7 +87,7 @@ class ChecksumResolver extends React.Component {
                     const { success, activationBytes } = result;
                     if (success === true) {
                         this.setState({ activationBytes: result.activationBytes });
-                    }else{
+                    } else {
                         this.setState({ activationBytes: 'UNKNOWN' });
                     }
 
@@ -99,6 +101,24 @@ class ChecksumResolver extends React.Component {
                     // });
                 }
             )
+    }
+
+    buf2hex(buffer) { // buffer is an ArrayBuffer
+        return Array.prototype.map.call(new Uint8Array(buffer), x => ('00' + x.toString(16)).slice(-2)).join('');
+    }
+
+    acceptFile = async files =>{
+        const file = files[0];
+        if(!file.name.endsWith(".aax")){
+            alert('FileType not supported!');
+            return;
+        }
+
+        const slic = file.slice(653, 653 + 20);
+        const results = this.buf2hex(await slic.arrayBuffer());
+        this.setChecksum(results)
+        this.requestActivationBytes();
+
     }
 
     render() {
@@ -118,20 +138,38 @@ class ChecksumResolver extends React.Component {
                     </Typography>
 
                     <form className={classes.form} noValidate>
-                        <TextField
-                            error={!this.isChecksumValid()}
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="checksum"
-                            label="AAX Checksum"
-                            name="checksum"
-                            autoComplete="checksum"
-                            autoFocus
-                            onChange={(x) => this.setChecksum(x.target.value)}
-                            value={checksum}
-                        />
+                        <Dropzone
+                            noClick
+                            onDrop={acceptedFiles => {
+                                console.log(acceptedFiles);
+                                this.acceptFile(acceptedFiles);
+                                //const file = document.getElementById('fileInput').files[0];
+                                
+                               
+                            }}>
+                            {({ getRootProps, getInputProps }) => (
+                                <section>
+                                    <div {...getRootProps()}>
+                                        <input {...getInputProps()} />
+                                        <TextField
+                                            error={!this.isChecksumValid()}
+                                            variant="outlined"
+                                            margin="normal"
+                                            required
+                                            fullWidth
+                                            id="checksum"
+                                            label="Checksum or Drag&Drop .aax file"
+                                            name="checksum"
+                                            autoComplete="checksum"
+                                            autoFocus
+                                            onChange={(x) => this.setChecksum(x.target.value)}
+                                            value={checksum}
+
+                                        />
+                                    </div>
+                                </section>
+                            )}
+                        </Dropzone>
 
                         <Button
                             fullWidth
@@ -151,7 +189,7 @@ class ChecksumResolver extends React.Component {
                             margin="normal"
                             fullWidth
                             id="activationBytes"
-                            label={activationBytes?'':"Activation Bytes"}
+                            label={activationBytes ? '' : "Activation Bytes"}
                             name="activationBytes"
                             autoComplete="activationBytes"
                             aria-readonly
