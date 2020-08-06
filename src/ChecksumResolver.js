@@ -158,7 +158,7 @@ class ChecksumResolver extends React.Component {
                                             required
                                             fullWidth
                                             id="checksum"
-                                            label="Checksum or Drag&Drop .aax file"
+                                            label="Checksum or Drag&Drop .aax file -"
                                             name="checksum"
                                             autoComplete="checksum"
                                             autoFocus
