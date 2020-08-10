@@ -14,8 +14,7 @@ import Container from '@material-ui/core/Container';
 import Dropzone from 'react-dropzone'
 import IconButton from '@material-ui/core/IconButton';
 import FileCopyOutlined from '@material-ui/icons/FileCopyOutlined';
-// import Visibility from '@material-ui/icons/Visibility';
-// import VisibilityOff from '@material-ui/icons/VisibilityOff';
+
 
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
@@ -64,7 +63,7 @@ class ChecksumResolver extends React.Component {
         root: {
             marginRight: 8,
             "& .MuiInputBase-root.Mui-disabled": {
-                color: "rgba(0, 0, 0, 0.6)" // (default alpha is 0.38)
+                color: "rgba(0, 0, 0, 0.6)" 
             }
         }
     })(TextField);
@@ -110,10 +109,6 @@ class ChecksumResolver extends React.Component {
                 },
                 (error) => {
                     this.setState({ activationBytes: 'UNKNOWN' });
-                    // this.setState({
-                    //     isLoaded: true,
-                    //     error
-                    // });
                 }
             )
     }
@@ -233,5 +228,3 @@ class ChecksumResolver extends React.Component {
 }
 
 export default withStyles(useStyles)(ChecksumResolver);
-
-/*<YOUR_COPY_ICON_BUTTON /> */
