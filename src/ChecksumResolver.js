@@ -12,6 +12,13 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 
 import Dropzone from 'react-dropzone'
+import IconButton from '@material-ui/core/IconButton';
+import FileCopyOutlined from '@material-ui/icons/FileCopyOutlined';
+// import Visibility from '@material-ui/icons/Visibility';
+// import VisibilityOff from '@material-ui/icons/VisibilityOff';
+
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+
 
 const useStyles = theme => ({
     paper: {
@@ -77,6 +84,14 @@ class ChecksumResolver extends React.Component {
         return testResults;
     }
 
+    isInputInvalid = ()=>{
+        const { checksum } = this.state;
+        if(!checksum || checksum === ''){
+            return false;
+        }
+        return !this.isChecksumValid();
+    };
+
     requestActivationBytes = () => {
         const { checksum } = this.state;
 
@@ -107,9 +122,9 @@ class ChecksumResolver extends React.Component {
         return Array.prototype.map.call(new Uint8Array(buffer), x => ('00' + x.toString(16)).slice(-2)).join('');
     }
 
-    acceptFile = async files =>{
+    acceptFile = async files => {
         const file = files[0];
-        if(!file.name.endsWith(".aax")){
+        if (!file.name.endsWith(".aax")) {
             alert('FileType not supported!');
             return;
         }
@@ -144,15 +159,15 @@ class ChecksumResolver extends React.Component {
                                 console.log(acceptedFiles);
                                 this.acceptFile(acceptedFiles);
                                 //const file = document.getElementById('fileInput').files[0];
-                                
-                               
+
+
                             }}>
                             {({ getRootProps, getInputProps }) => (
                                 <section>
                                     <div {...getRootProps()}>
                                         <input {...getInputProps()} />
                                         <TextField
-                                            error={!this.isChecksumValid()}
+                                            error={this.isInputInvalid()}
                                             variant="outlined"
                                             margin="normal"
                                             required
@@ -195,7 +210,14 @@ class ChecksumResolver extends React.Component {
                             aria-readonly
 
                             InputProps={{
-                                readOnly: true
+                                readOnly: true,
+                                endAdornment: (
+                                    <CopyToClipboard text={activationBytes}>
+                                        <IconButton >
+                                            <FileCopyOutlined />
+                                        </IconButton>
+                                    </CopyToClipboard>
+                                )
                             }}
 
                         />
@@ -211,3 +233,5 @@ class ChecksumResolver extends React.Component {
 }
 
 export default withStyles(useStyles)(ChecksumResolver);
+
+/*<YOUR_COPY_ICON_BUTTON /> */
