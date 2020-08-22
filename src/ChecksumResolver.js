@@ -94,7 +94,9 @@ class ChecksumResolver extends React.Component {
     requestActivationBytes = () => {
         const { checksum } = this.state;
 
-        fetch("https://aaxactivationserviceapi.azurewebsites.net/api/v2/activation/" + checksum)
+        // fetch("https://aaxactivationserviceapi.azurewebsites.net/api/v2/activation/" + checksum)
+         // fetch("https://localhost:32768/api/v2/activation/" + checksum)
+       fetch("https://aax.api.j-kit.me/api/v2/activation/" + checksum)
             .then(res => res.json())
             .then(
                 (result) => {
