@@ -17,6 +17,7 @@ import FileCopyOutlined from '@material-ui/icons/FileCopyOutlined';
 
 
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { Accordion, AccordionItem } from 'react-sanfona';
 
 
 const useStyles = theme => ({
@@ -63,7 +64,7 @@ class ChecksumResolver extends React.Component {
         root: {
             marginRight: 8,
             "& .MuiInputBase-root.Mui-disabled": {
-                color: "rgba(0, 0, 0, 0.6)" 
+                color: "rgba(0, 0, 0, 0.6)"
             }
         }
     })(TextField);
@@ -83,9 +84,9 @@ class ChecksumResolver extends React.Component {
         return testResults;
     }
 
-    isInputInvalid = ()=>{
+    isInputInvalid = () => {
         const { checksum } = this.state;
-        if(!checksum || checksum === ''){
+        if (!checksum || checksum === '') {
             return false;
         }
         return !this.isChecksumValid();
@@ -94,9 +95,7 @@ class ChecksumResolver extends React.Component {
     requestActivationBytes = () => {
         const { checksum } = this.state;
 
-        // fetch("https://aaxactivationserviceapi.azurewebsites.net/api/v2/activation/" + checksum)
-         // fetch("https://localhost:32768/api/v2/activation/" + checksum)
-       fetch("https://aax.api.j-kit.me/api/v2/activation/" + checksum)
+        fetch("https://aax.api.j-kit.me/api/v2/activation/" + checksum)
             .then(res => res.json())
             .then(
                 (result) => {
@@ -121,10 +120,10 @@ class ChecksumResolver extends React.Component {
 
     acceptFile = async files => {
         const file = files[0];
-        if (!file.name.endsWith(".aax")) {
-            alert('FileType not supported!');
-            return;
-        }
+        // if (!file.name.toLowerCase().endsWith(".aax")) {
+        //     alert('FileType not supported!');
+        //     return;
+        // }
 
         const slic = file.slice(653, 653 + 20);
         const results = this.buf2hex(await slic.arrayBuffer());
@@ -136,6 +135,7 @@ class ChecksumResolver extends React.Component {
     render() {
         const { classes } = this.props;
         const { checksum, activationBytes } = this.state;
+        //const acc = accAX();
 
         return (
             <Container component="main" maxWidth="xs">
@@ -224,6 +224,18 @@ class ChecksumResolver extends React.Component {
                 <Box mt={1}>
                     <Copyright />
                 </Box>
+
+                <Accordion backgroundColor="Black">
+                    {[1, 2, 3, 4, 5].map(item => {
+                        return (
+                            <AccordionItem title={`Item ${item}`} expanded={item === 1}>
+                                <div>
+                                    {`Item ${item} content`}
+                                </div>
+                            </AccordionItem>
+                        );
+                    })}
+                </Accordion>
             </Container>
         );
     }
