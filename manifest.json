@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Audible Tools",
+  "name": "Tools to remove DRM from aax",
   "icons": [
     {
       "src": "favicon.ico",
