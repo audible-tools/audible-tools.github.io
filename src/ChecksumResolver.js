@@ -32,6 +32,8 @@ import ReactNotification from 'react-notifications-component'
 import { store } from 'react-notifications-component';
 // import 'animate.css/animate.compat.css'
 
+import AaxHashAlgorithm from './Utils/AaxHashAlgorithm'
+
 
 const useStyles = theme => ({
     paper: {
@@ -137,12 +139,24 @@ class ChecksumResolver extends React.Component {
             let request = await fetch("https://aax.api.j-kit.me/api/v2/activation/" + checksum);
             let result = await request.json();
             const { success, activationBytes } = result;
-            if (success === true) {
-                this.setState({ activationBytes: activationBytes });
-                this.addNotification("Successfully resolved the activation bytes");
-            } else {
+
+            if (success !== true) {
                 this.setState({ activationBytes: 'UNKNOWN' });
                 this.addNotification("An error occured while resolving the activation bytes, please check your inputs", false);
+                return;
+            }
+
+            if (success === true) {
+                const calculatedChecksum = await AaxHashAlgorithm.CalculateChecksum(activationBytes);
+                if (calculatedChecksum == checksum) {
+                    this.setState({ activationBytes: activationBytes });
+                    this.addNotification("Successfully resolved the activation bytes");
+                    return;
+                }
+                
+                this.setState({ activationBytes: "API ERROR" });
+                this.addNotification("An unexpected error occured while resolving the activation bytes, please try again", false);
+
             }
         } catch (error) {
             this.setState({ activationBytes: error });
