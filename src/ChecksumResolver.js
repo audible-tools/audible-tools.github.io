@@ -17,13 +17,20 @@ import FileCopyOutlined from '@material-ui/icons/FileCopyOutlined';
 import PublishOutlined from '@material-ui/icons/PublishOutlined';
 
 // import { useFilePicker } from 'react-sage'
-//import { FilePicker } from 'react-file-picker'
+// import { FilePicker } from 'react-file-picker'
 
+import { FilePicker } from '../src/Components'
 
 
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 import ControlledAccordions from './ControlledAccordions'
+
+import 'react-notifications-component/dist/theme.css'
+
+import ReactNotification from 'react-notifications-component'
+import { store } from 'react-notifications-component';
+// import 'animate.css/animate.compat.css'
 
 
 const useStyles = theme => ({
@@ -108,34 +115,51 @@ class ChecksumResolver extends React.Component {
         return !this.isChecksumValid();
     };
 
-    requestActivationBytes = () => {
+    addNotification = function (text, success = true) {
+        store.addNotification({
+            message: text,
+            type: success ? "success" : "danger",
+            // type: "danger",
+            insert: "bottom-left",
+            container: "top-full",
+            animationIn: ["animate__animated", "animate__fadeIn"],
+            animationOut: ["animate__animated", "animate__fadeOut"],
+            dismiss: {
+                duration: 3000,
+                onScreen: false
+            }
+        });
+    }
+
+    requestActivationBytes = async () => {
         const { checksum } = this.state;
-
-        fetch("https://aax.api.j-kit.me/api/v2/activation/" + checksum)
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    const { success, activationBytes } = result;
-                    if (success === true) {
-                        this.setState({ activationBytes: result.activationBytes });
-                    } else {
-                        this.setState({ activationBytes: 'UNKNOWN' });
-                    }
-
-
-                },
-                (error) => {
-                    this.setState({ activationBytes: 'UNKNOWN' });
-                }
-            )
+        try {
+            let request = await fetch("https://aax.api.j-kit.me/api/v2/activation/" + checksum);
+            let result = await request.json();
+            const { success, activationBytes } = result;
+            if (success === true) {
+                this.setState({ activationBytes: activationBytes });
+                this.addNotification("Successfully resolved the activation bytes");
+            } else {
+                this.setState({ activationBytes: 'UNKNOWN' });
+                this.addNotification("An error occured while resolving the activation bytes, please check your inputs", false);
+            }
+        } catch (error) {
+            this.setState({ activationBytes: error });
+            this.addNotification("An error occured while resolving the activation bytes, please check your inputs", false);
+        }
     }
 
     buf2hex(buffer) { // buffer is an ArrayBuffer
         return Array.prototype.map.call(new Uint8Array(buffer), x => ('00' + x.toString(16)).slice(-2)).join('');
     }
 
-    acceptFile = async files => {
+    acceptFiles = async files => {
         const file = files[0];
+        await this.acceptFile(file);
+    }
+
+    acceptFile = async file => {
         // if (!file.name.toLowerCase().endsWith(".aax")) {
         //     alert('FileType not supported!');
         //     return;
@@ -177,7 +201,7 @@ class ChecksumResolver extends React.Component {
                             noClick
                             onDrop={acceptedFiles => {
                                 console.log(acceptedFiles);
-                                this.acceptFile(acceptedFiles);
+                                this.acceptFiles(acceptedFiles);
                             }}>
                             {({ getRootProps, getInputProps }) => (
                                 <section>
@@ -196,35 +220,19 @@ class ChecksumResolver extends React.Component {
                                             autoFocus
                                             onChange={(x) => this.setChecksum(x.target.value)}
                                             value={checksum}
-
                                             InputProps={{
-                                                readOnly: true,
-//                                                 endAdornment: (
-//                                                     // <IconButton onClick={() => {
-
-//                                                     //     alert('hi')
-//                                                     // }}>
-//                                                     //     <PublishOutlined />
-//                                                     // </IconButton>
-
-//                                                     // <IconButton>
-//                                                     //     <HiddenFileInput accept=".jpg, .jpeg, .png" multiple={false} />
-
-//                                                     //     <PublishOutlined />
-//                                                     // </IconButton>
-// //accept="image/*"
-//                                                     // <FilePicker
-//                                                     //     accept="image/*"
-//                                                     //     extensions={['aax','AAX']}
-//                                                     //     acceptFile="image/*"
-//                                                     //     onChange={FileObject => { }}
-//                                                     //     onError={errMsg => { }}
-//                                                     // >
-//                                                     //     <IconButton >
-//                                                     //         <PublishOutlined />
-//                                                     //     </IconButton>
-//                                                     // </FilePicker>
-//                                                 )
+                                                readOnly: false,
+                                                endAdornment: (
+                                                    <FilePicker
+                                                        extensions={['aax', 'AAX']}
+                                                        maxSize={99999}
+                                                        onChange={this.acceptFile}
+                                                    >
+                                                        <IconButton >
+                                                            <PublishOutlined />
+                                                        </IconButton>
+                                                    </FilePicker>
+                                                )
                                             }}
 
                                         />
@@ -278,6 +286,7 @@ class ChecksumResolver extends React.Component {
                 <Box mt={1}>
                     <this.Copyright />
                 </Box>
+
 
 
             </Container>
