@@ -14,6 +14,11 @@ import Container from '@material-ui/core/Container';
 import Dropzone from 'react-dropzone'
 import IconButton from '@material-ui/core/IconButton';
 import FileCopyOutlined from '@material-ui/icons/FileCopyOutlined';
+import PublishOutlined from '@material-ui/icons/PublishOutlined';
+
+// import { useFilePicker } from 'react-sage'
+//import { FilePicker } from 'react-file-picker'
+
 
 
 import { CopyToClipboard } from 'react-copy-to-clipboard';
@@ -147,7 +152,13 @@ class ChecksumResolver extends React.Component {
     render() {
         const { classes } = this.props;
         const { checksum, activationBytes, fileName } = this.state;
-        //const acc = accAX();
+
+        // const { files, onClick, errors, HiddenFileInput } = useFilePicker({
+        //     maxFileSize: 1000000,
+        //     maxImageWidth: 1000,
+        //     imageQuality: 0.92,
+        //     resizeImage: true
+        //   });
 
         return (
             <Container component="main" maxWidth="md">
@@ -167,9 +178,6 @@ class ChecksumResolver extends React.Component {
                             onDrop={acceptedFiles => {
                                 console.log(acceptedFiles);
                                 this.acceptFile(acceptedFiles);
-                                //const file = document.getElementById('fileInput').files[0];
-
-
                             }}>
                             {({ getRootProps, getInputProps }) => (
                                 <section>
@@ -188,6 +196,36 @@ class ChecksumResolver extends React.Component {
                                             autoFocus
                                             onChange={(x) => this.setChecksum(x.target.value)}
                                             value={checksum}
+
+                                            InputProps={{
+                                                readOnly: true,
+//                                                 endAdornment: (
+//                                                     // <IconButton onClick={() => {
+
+//                                                     //     alert('hi')
+//                                                     // }}>
+//                                                     //     <PublishOutlined />
+//                                                     // </IconButton>
+
+//                                                     // <IconButton>
+//                                                     //     <HiddenFileInput accept=".jpg, .jpeg, .png" multiple={false} />
+
+//                                                     //     <PublishOutlined />
+//                                                     // </IconButton>
+// //accept="image/*"
+//                                                     // <FilePicker
+//                                                     //     accept="image/*"
+//                                                     //     extensions={['aax','AAX']}
+//                                                     //     acceptFile="image/*"
+//                                                     //     onChange={FileObject => { }}
+//                                                     //     onError={errMsg => { }}
+//                                                     // >
+//                                                     //     <IconButton >
+//                                                     //         <PublishOutlined />
+//                                                     //     </IconButton>
+//                                                     // </FilePicker>
+//                                                 )
+                                            }}
 
                                         />
                                     </div>
@@ -234,7 +272,7 @@ class ChecksumResolver extends React.Component {
                     </form>
                 </div>
                 <ControlledAccordions
-                    fileName={fileName} 
+                    fileName={fileName}
                     activationBytes={activationBytes}
                 />
                 <Box mt={1}>
