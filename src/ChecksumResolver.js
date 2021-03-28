@@ -17,7 +17,8 @@ import FileCopyOutlined from '@material-ui/icons/FileCopyOutlined';
 
 
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { Accordion, AccordionItem } from 'react-sanfona';
+
+import ControlledAccordions from './ControlledAccordions'
 
 
 const useStyles = theme => ({
@@ -34,31 +35,28 @@ const useStyles = theme => ({
     form: {
         width: '100%', // Fix IE 11 issue.
         marginTop: theme.spacing(1),
-    }
+    },
+
+    //Accordeon
+    heading: {
+        fontSize: theme.typography.pxToRem(15),
+        flexBasis: '33.33%',
+        flexShrink: 0,
+    },
+    secondaryHeading: {
+        fontSize: theme.typography.pxToRem(15),
+        color: theme.palette.text.secondary,
+    },
 });
-
-
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://audible-tools.github.io/">
-                audible-tools
-        </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
 
 class ChecksumResolver extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            checksum: ""
+            checksum: "",
+            fileName: "input.aax"
         }
     }
-
 
     DarkerDisabledTextField = withStyles({
         root: {
@@ -68,6 +66,19 @@ class ChecksumResolver extends React.Component {
             }
         }
     })(TextField);
+
+    Copyright = (function () {
+        return (
+            <Typography variant="body2" color="textSecondary" align="center">
+                {'Copyright © '}
+                <Link color="inherit" href="https://audible-tools.github.io/">
+                    audible-tools
+            </Link>{' '}
+                {new Date().getFullYear()}
+                {'.'}
+            </Typography>
+        );
+    })
 
     setChecksum = (value) => {
         if (value.length > 40) {
@@ -125,6 +136,7 @@ class ChecksumResolver extends React.Component {
         //     return;
         // }
 
+        this.setState({ fileName: file.name });
         const slic = file.slice(653, 653 + 20);
         const results = this.buf2hex(await slic.arrayBuffer());
         this.setChecksum(results)
@@ -134,11 +146,11 @@ class ChecksumResolver extends React.Component {
 
     render() {
         const { classes } = this.props;
-        const { checksum, activationBytes } = this.state;
+        const { checksum, activationBytes, fileName } = this.state;
         //const acc = accAX();
 
         return (
-            <Container component="main" maxWidth="xs">
+            <Container component="main" maxWidth="md">
 
                 <CssBaseline />
                 <div className={classes.paper}>
@@ -221,21 +233,15 @@ class ChecksumResolver extends React.Component {
 
                     </form>
                 </div>
+                <ControlledAccordions
+                    fileName={fileName} 
+                    activationBytes={activationBytes}
+                />
                 <Box mt={1}>
-                    <Copyright />
+                    <this.Copyright />
                 </Box>
 
-                <Accordion backgroundColor="Black">
-                    {[1, 2, 3, 4, 5].map(item => {
-                        return (
-                            <AccordionItem title={`Item ${item}`} expanded={item === 1}>
-                                <div>
-                                    {`Item ${item} content`}
-                                </div>
-                            </AccordionItem>
-                        );
-                    })}
-                </Accordion>
+
             </Container>
         );
     }
