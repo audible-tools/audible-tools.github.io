@@ -240,6 +240,9 @@ class ChecksumResolver extends React.Component {
                                                         extensions={['aax', 'AAX']}
                                                         maxSize={99999}
                                                         onChange={this.acceptFile}
+                                                        onError={() => {
+                                                            this.addNotification("An unexpected error occured");
+                                                        }}
                                                     >
                                                         <IconButton >
                                                             <PublishOutlined />
