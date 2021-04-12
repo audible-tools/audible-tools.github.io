@@ -168,8 +168,10 @@ class ChecksumResolver extends React.Component {
     }
 
     acceptFiles = async files => {
-        const file = files[0];
-        await this.acceptFile(file);
+        if(files && files.length) {
+            const file = files[0];
+            await this.acceptFile(file);
+        }
     }
 
     acceptFile = async file => {
