@@ -215,7 +215,6 @@ class ChecksumResolver extends React.Component {
                         <Dropzone
                             noClick
                             onDrop={acceptedFiles => {
-                                console.log(acceptedFiles);
                                 this.acceptFiles(acceptedFiles);
                             }}>
                             {({ getRootProps, getInputProps }) => (
