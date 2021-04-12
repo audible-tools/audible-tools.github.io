@@ -218,7 +218,7 @@ class ChecksumResolver extends React.Component {
                                 this.acceptFiles(acceptedFiles);
                             }}>
                             {({ getRootProps, getInputProps }) => (
-                                <section>
+                                <section id="dropzone">
                                     <div {...getRootProps()}>
                                         <input {...getInputProps()} />
                                         <TextField
