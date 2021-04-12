@@ -4,12 +4,8 @@
   "private": true,
   "version": "0.1.0",
   "dependencies": {
-    "@babel/core": "^7.13.13",
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
     "react": "^16.14.0",
     "react-copy-to-clipboard": "^5.0.3",
     "react-dom": "^16.14.0",
@@ -17,12 +13,9 @@
     "react-file-picker": "git+https://github.com/dantheuber/react-file-picker.git#master",
     "react-ga": "^3.3.0",
     "react-notifications-component": "^3.1.0",
-    "react-scripts": "^4.0.3",
-    "reactstrap": "^8.9.0",
-    "typescript": "^4.2.3"
+    "reactstrap": "^8.9.0"
   },
   "scripts": {
-    "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -45,6 +38,12 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^3.1.0"
+    "@babel/core": "^7.13.13",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "gh-pages": "^3.1.0",
+    "react-scripts": "^4.0.3",
+    "typescript": "^4.2.3"
   }
 }
