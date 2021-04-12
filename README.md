@@ -1,4 +1,4 @@
-If you are looking for an API documentation: (https://github.com/audible-tools/Api-Documentation)[Documentation]
+If you are looking for an API documentation: [API Documentation](https://github.com/audible-tools/Api-Documentation)
 
 ## Available Scripts
 
