@@ -181,8 +181,8 @@ class ChecksumResolver extends React.Component {
         // }
 
         this.setState({ fileName: file.name });
-        const slic = file.slice(653, 653 + 20);
-        const results = this.buf2hex(await slic.arrayBuffer());
+        const byteSlice = file.slice(653, 653 + 20);
+        const results = this.buf2hex(await byteSlice.arrayBuffer());
         this.setChecksum(results)
         this.requestActivationBytes();
 
