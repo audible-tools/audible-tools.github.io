@@ -236,7 +236,7 @@ class ChecksumResolver extends React.Component {
                                             onChange={(x) => this.setChecksum(x.target.value)}
                                             value={checksum}
                                             InputProps={{
-                                                readOnly: false,
+                                                readOnly: true,
                                                 endAdornment: (
                                                     <FilePicker
                                                         extensions={['aax', 'AAX']}
