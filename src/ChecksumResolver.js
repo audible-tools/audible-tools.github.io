@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { withStyles } from "@material-ui/core/styles";
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -28,7 +28,6 @@ import ControlledAccordions from './ControlledAccordions'
 
 import 'react-notifications-component/dist/theme.css'
 
-import ReactNotification from 'react-notifications-component'
 import { store } from 'react-notifications-component';
 // import 'animate.css/animate.compat.css'
 
@@ -148,7 +147,7 @@ class ChecksumResolver extends React.Component {
 
             if (success === true) {
                 const calculatedChecksum = await AaxHashAlgorithm.CalculateChecksum(activationBytes);
-                if (calculatedChecksum == checksum) {
+                if (calculatedChecksum === checksum) {
                     this.setState({ activationBytes: activationBytes });
                     this.addNotification("Successfully resolved the activation bytes");
                     return;
