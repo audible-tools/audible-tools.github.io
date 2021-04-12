@@ -1,0 +1,773 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fresh component 1`] = `
+<div>
+  <div>
+    <div
+      style="display: flex;"
+    >
+      <div
+        class="notifications-component "
+      >
+        <div
+          class="notification-container--top-full"
+        />
+        <div
+          class="notification-container--bottom-full"
+        />
+        <div
+          class="notification-container--top-left"
+        />
+        <div
+          class="notification-container--top-right"
+        />
+        <div
+          class="notification-container--bottom-left"
+        />
+        <div
+          class="notification-container--bottom-right"
+        />
+        <div
+          class="notification-container--top-center"
+        />
+        <div
+          class="notification-container--center"
+        >
+          <div
+            class="flex-center"
+          />
+        </div>
+        <div
+          class="notification-container--bottom-center"
+        />
+      </div>
+    </div>
+    <main
+      class="MuiContainer-root MuiContainer-maxWidthMd"
+    >
+      <div
+        class="ChecksumResolver-paper-1"
+      >
+        <div
+          class="MuiAvatar-root MuiAvatar-circle ChecksumResolver-avatar-2 MuiAvatar-colorDefault"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"
+            />
+          </svg>
+        </div>
+        <h1
+          class="MuiTypography-root MuiTypography-h5"
+        >
+          AAX Checksum Resolver
+        </h1>
+        <form
+          class="ChecksumResolver-form-3"
+          novalidate=""
+        >
+          <section
+            id="dropzone"
+          >
+            <div
+              tabindex="0"
+            >
+              <input
+                autocomplete="off"
+                multiple=""
+                style="display: none;"
+                tabindex="-1"
+                type="file"
+              />
+              <div
+                class="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal MuiFormControl-fullWidth"
+              >
+                <label
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-focused Mui-focused Mui-required Mui-required"
+                  data-shrink="true"
+                  for="checksum"
+                  id="checksum-label"
+                >
+                  Checksum or Drag&Drop .aax file -
+                  <span
+                    aria-hidden="true"
+                    class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+                  >
+                     
+                    *
+                  </span>
+                </label>
+                <div
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth Mui-focused Mui-focused MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocomplete="checksum"
+                    class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+                    id="checksum"
+                    name="checksum"
+                    readonly=""
+                    required=""
+                    type="text"
+                    value=""
+                  />
+                  <div>
+                    <input
+                      accept=".aax,.AAX"
+                      style="display: none;"
+                      type="file"
+                    />
+                    <button
+                      class="MuiButtonBase-root MuiIconButton-root"
+                      tabindex="0"
+                      type="button"
+                    >
+                      <span
+                        class="MuiIconButton-label"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M5 4h14v2H5zm0 10h4v6h6v-6h4l-7-7-7 7zm8-2v6h-2v-6H9.83L12 9.83 14.17 12H13z"
+                          />
+                        </svg>
+                      </span>
+                      <span
+                        class="MuiTouchRipple-root"
+                      />
+                    </button>
+                  </div>
+                  <fieldset
+                    aria-hidden="true"
+                    class="PrivateNotchedOutline-root-6 MuiOutlinedInput-notchedOutline"
+                  >
+                    <legend
+                      class="PrivateNotchedOutline-legendLabelled-8 PrivateNotchedOutline-legendNotched-9"
+                    >
+                      <span>
+                        Checksum or Drag&Drop .aax file -
+                         *
+                      </span>
+                    </legend>
+                  </fieldset>
+                </div>
+              </div>
+            </div>
+          </section>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained Mui-disabled MuiButton-fullWidth Mui-disabled"
+            disabled=""
+            tabindex="-1"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Request Activation Bytes
+            </span>
+          </button>
+          <div
+            aria-readonly="true"
+            class="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-10 MuiFormControl-marginNormal MuiFormControl-fullWidth"
+          >
+            <label
+              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined Mui-disabled Mui-disabled"
+              data-shrink="false"
+              for="activationBytes"
+              id="activationBytes-label"
+            >
+              Activation Bytes
+            </label>
+            <div
+              class="MuiInputBase-root MuiOutlinedInput-root Mui-disabled Mui-disabled MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
+            >
+              <input
+                aria-invalid="false"
+                autocomplete="activationBytes"
+                class="MuiInputBase-input MuiOutlinedInput-input Mui-disabled Mui-disabled MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+                disabled=""
+                id="activationBytes"
+                name="activationBytes"
+                readonly=""
+                type="text"
+                value=""
+              />
+              <button
+                class="MuiButtonBase-root MuiIconButton-root"
+                tabindex="0"
+                type="button"
+              >
+                <span
+                  class="MuiIconButton-label"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4H8c-1.1 0-1.99.9-1.99 2L6 21c0 1.1.89 2 1.99 2H19c1.1 0 2-.9 2-2V11l-6-6zM8 21V7h6v5h5v9H8z"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+              <fieldset
+                aria-hidden="true"
+                class="PrivateNotchedOutline-root-6 MuiOutlinedInput-notchedOutline"
+              >
+                <legend
+                  class="PrivateNotchedOutline-legendLabelled-8"
+                >
+                  <span>
+                    Activation Bytes
+                  </span>
+                </legend>
+              </fieldset>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div
+        class="ControlledAccordions-root-11"
+      >
+        <div
+          class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          <div
+            aria-controls="panel2bh-content"
+            aria-disabled="false"
+            aria-expanded="false"
+            class="MuiButtonBase-root MuiAccordionSummary-root"
+            id="panel2bh-header"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="MuiAccordionSummary-content"
+            >
+              <p
+                class="MuiTypography-root ControlledAccordions-heading-12 MuiTypography-body1"
+              >
+                Command
+              </p>
+              <p
+                class="MuiTypography-root ControlledAccordions-secondaryHeading-13 MuiTypography-body1"
+              >
+                Generate ffmpeg command
+              </p>
+            </div>
+            <div
+              aria-disabled="false"
+              aria-hidden="true"
+              class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </div>
+          </div>
+          <div
+            class="MuiCollapse-container MuiCollapse-hidden"
+            style="min-height: 0px;"
+          >
+            <div
+              class="MuiCollapse-wrapper"
+            >
+              <div
+                class="MuiCollapse-wrapperInner"
+              >
+                <div
+                  aria-labelledby="panel2bh-header"
+                  id="panel2bh-content"
+                  role="region"
+                >
+                  <div
+                    class="MuiAccordionDetails-root"
+                    style="display: block;"
+                  >
+                    <fieldset
+                      class="MuiFormControl-root"
+                    >
+                      <legend
+                        class="MuiFormLabel-root"
+                      >
+                        Output Format
+                      </legend>
+                      <div
+                        aria-label="format"
+                        class="MuiFormGroup-root"
+                        role="radiogroup"
+                      >
+                        <label
+                          class="MuiFormControlLabel-root"
+                        >
+                          <span
+                            aria-disabled="false"
+                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-14 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-15 Mui-checked MuiIconButton-colorSecondary"
+                          >
+                            <span
+                              class="MuiIconButton-label"
+                            >
+                              <input
+                                checked=""
+                                class="PrivateSwitchBase-input-17"
+                                name="format"
+                                type="radio"
+                                value="m4b"
+                              />
+                              <div
+                                class="PrivateRadioButtonIcon-root-18 PrivateRadioButtonIcon-checked-20"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  class="MuiSvgIcon-root"
+                                  focusable="false"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                                  />
+                                </svg>
+                                <svg
+                                  aria-hidden="true"
+                                  class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-19"
+                                  focusable="false"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                                  />
+                                </svg>
+                              </div>
+                            </span>
+                            <span
+                              class="MuiTouchRipple-root"
+                            />
+                          </span>
+                          <span
+                            class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+                          >
+                            AAC m4b
+                          </span>
+                        </label>
+                        <label
+                          class="MuiFormControlLabel-root"
+                        >
+                          <span
+                            aria-disabled="false"
+                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-14 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+                          >
+                            <span
+                              class="MuiIconButton-label"
+                            >
+                              <input
+                                class="PrivateSwitchBase-input-17"
+                                name="format"
+                                type="radio"
+                                value="flac"
+                              />
+                              <div
+                                class="PrivateRadioButtonIcon-root-18"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  class="MuiSvgIcon-root"
+                                  focusable="false"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                                  />
+                                </svg>
+                                <svg
+                                  aria-hidden="true"
+                                  class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-19"
+                                  focusable="false"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                                  />
+                                </svg>
+                              </div>
+                            </span>
+                            <span
+                              class="MuiTouchRipple-root"
+                            />
+                          </span>
+                          <span
+                            class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+                          >
+                            FLAC hq
+                          </span>
+                        </label>
+                        <label
+                          class="MuiFormControlLabel-root"
+                        >
+                          <span
+                            aria-disabled="false"
+                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-14 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+                          >
+                            <span
+                              class="MuiIconButton-label"
+                            >
+                              <input
+                                class="PrivateSwitchBase-input-17"
+                                name="format"
+                                type="radio"
+                                value="mp3"
+                              />
+                              <div
+                                class="PrivateRadioButtonIcon-root-18"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  class="MuiSvgIcon-root"
+                                  focusable="false"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                                  />
+                                </svg>
+                                <svg
+                                  aria-hidden="true"
+                                  class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-19"
+                                  focusable="false"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                                  />
+                                </svg>
+                              </div>
+                            </span>
+                            <span
+                              class="MuiTouchRipple-root"
+                            />
+                          </span>
+                          <span
+                            class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+                          >
+                            Lame mp3
+                          </span>
+                        </label>
+                      </div>
+                    </fieldset>
+                    <fieldset
+                      class="MuiFormControl-root"
+                      style="padding-left: 20px;"
+                    >
+                      <legend
+                        class="MuiFormLabel-root"
+                      >
+                        Operating System
+                      </legend>
+                      <div
+                        aria-label="format"
+                        class="MuiFormGroup-root"
+                        role="radiogroup"
+                      >
+                        <label
+                          class="MuiFormControlLabel-root"
+                        >
+                          <span
+                            aria-disabled="false"
+                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-14 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-15 Mui-checked MuiIconButton-colorSecondary"
+                          >
+                            <span
+                              class="MuiIconButton-label"
+                            >
+                              <input
+                                checked=""
+                                class="PrivateSwitchBase-input-17"
+                                name="format"
+                                type="radio"
+                                value="win"
+                              />
+                              <div
+                                class="PrivateRadioButtonIcon-root-18 PrivateRadioButtonIcon-checked-20"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  class="MuiSvgIcon-root"
+                                  focusable="false"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                                  />
+                                </svg>
+                                <svg
+                                  aria-hidden="true"
+                                  class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-19"
+                                  focusable="false"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                                  />
+                                </svg>
+                              </div>
+                            </span>
+                            <span
+                              class="MuiTouchRipple-root"
+                            />
+                          </span>
+                          <span
+                            class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+                          >
+                            Windows
+                          </span>
+                        </label>
+                        <label
+                          class="MuiFormControlLabel-root"
+                        >
+                          <span
+                            aria-disabled="false"
+                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-14 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+                          >
+                            <span
+                              class="MuiIconButton-label"
+                            >
+                              <input
+                                class="PrivateSwitchBase-input-17"
+                                name="format"
+                                type="radio"
+                                value="linux"
+                              />
+                              <div
+                                class="PrivateRadioButtonIcon-root-18"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  class="MuiSvgIcon-root"
+                                  focusable="false"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                                  />
+                                </svg>
+                                <svg
+                                  aria-hidden="true"
+                                  class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-19"
+                                  focusable="false"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                                  />
+                                </svg>
+                              </div>
+                            </span>
+                            <span
+                              class="MuiTouchRipple-root"
+                            />
+                          </span>
+                          <span
+                            class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+                          >
+                            Linux
+                          </span>
+                        </label>
+                        <label
+                          class="MuiFormControlLabel-root"
+                        >
+                          <span
+                            aria-disabled="false"
+                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-14 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+                          >
+                            <span
+                              class="MuiIconButton-label"
+                            >
+                              <input
+                                class="PrivateSwitchBase-input-17"
+                                name="format"
+                                type="radio"
+                                value="osx"
+                              />
+                              <div
+                                class="PrivateRadioButtonIcon-root-18"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  class="MuiSvgIcon-root"
+                                  focusable="false"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                                  />
+                                </svg>
+                                <svg
+                                  aria-hidden="true"
+                                  class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-19"
+                                  focusable="false"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                                  />
+                                </svg>
+                              </div>
+                            </span>
+                            <span
+                              class="MuiTouchRipple-root"
+                            />
+                          </span>
+                          <span
+                            class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+                          >
+                            Mac
+                          </span>
+                        </label>
+                      </div>
+                    </fieldset>
+                    <div
+                      aria-readonly="true"
+                      class="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-21 MuiFormControl-marginNormal MuiFormControl-fullWidth"
+                      font-size="5"
+                    >
+                      <label
+                        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-disabled Mui-disabled MuiFormLabel-filled"
+                        data-shrink="true"
+                        for="activationBytes"
+                        id="activationBytes-label"
+                      >
+                        cmd
+                      </label>
+                      <div
+                        class="MuiInputBase-root MuiOutlinedInput-root Mui-disabled Mui-disabled MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
+                      >
+                        <textarea
+                          aria-invalid="false"
+                          autocomplete="activationBytes"
+                          class="MuiInputBase-input MuiOutlinedInput-input Mui-disabled Mui-disabled MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+                          disabled=""
+                          id="activationBytes"
+                          name="activationBytes"
+                          readonly=""
+                          rows="1"
+                          style="height: 0px; overflow: hidden;"
+                        >
+                          ffmpeg.exe -y -activation_bytes 00000000 -i  ".\\input.aax" -map_metadata 0 -id3v2_version 3 -codec:a copy -vn "output.m4b"
+                        </textarea>
+                        <textarea
+                          aria-hidden="true"
+                          class="MuiInputBase-input MuiOutlinedInput-input Mui-disabled Mui-disabled MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+                          readonly=""
+                          style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); width: 100%;"
+                          tabindex="-1"
+                        />
+                        <button
+                          class="MuiButtonBase-root MuiIconButton-root"
+                          tabindex="0"
+                          type="button"
+                        >
+                          <span
+                            class="MuiIconButton-label"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              class="MuiSvgIcon-root"
+                              focusable="false"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4H8c-1.1 0-1.99.9-1.99 2L6 21c0 1.1.89 2 1.99 2H19c1.1 0 2-.9 2-2V11l-6-6zM8 21V7h6v5h5v9H8z"
+                              />
+                            </svg>
+                          </span>
+                          <span
+                            class="MuiTouchRipple-root"
+                          />
+                        </button>
+                        <fieldset
+                          aria-hidden="true"
+                          class="PrivateNotchedOutline-root-6 MuiOutlinedInput-notchedOutline"
+                        >
+                          <legend
+                            class="PrivateNotchedOutline-legendLabelled-8 PrivateNotchedOutline-legendNotched-9"
+                          >
+                            <span>
+                              cmd
+                            </span>
+                          </legend>
+                        </fieldset>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="MuiBox-root MuiBox-root-22"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-alignCenter"
+        >
+          Copyright © 
+          <a
+            class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorInherit"
+            href="https://audible-tools.github.io/"
+          >
+            audible-tools
+          </a>
+           
+          2021
+          .
+        </p>
+      </div>
+    </main>
+  </div>
+</div>
+`;
+
+exports[`upload field is as expected 1`] = `
+<label
+  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-focused Mui-focused Mui-required Mui-required"
+  data-shrink="true"
+  for="checksum"
+  id="checksum-label"
+>
+  Checksum or Drag&Drop .aax file -
+  <span
+    aria-hidden="true"
+    class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+  >
+     
+    *
+  </span>
+</label>
+`;
