@@ -16,9 +16,6 @@ import IconButton from '@material-ui/core/IconButton';
 import FileCopyOutlined from '@material-ui/icons/FileCopyOutlined';
 import PublishOutlined from '@material-ui/icons/PublishOutlined';
 
-// import { useFilePicker } from 'react-sage'
-// import { FilePicker } from 'react-file-picker'
-
 import { FilePicker } from '../src/Components'
 
 
@@ -62,6 +59,7 @@ const useStyles = theme => ({
     },
 });
 
+let mounted = false;
 class ChecksumResolver extends React.Component {
     constructor(props) {
         super(props);
@@ -80,6 +78,14 @@ class ChecksumResolver extends React.Component {
         }
     })(TextField);
 
+    componentDidMount() {
+        mounted = true;
+    }
+
+    componentWillUnmount() {
+        mounted = false;
+    }
+
     Copyright = (function () {
         return (
             <Typography variant="body2" color="textSecondary" align="center">
@@ -93,11 +99,11 @@ class ChecksumResolver extends React.Component {
         );
     })
 
-    setChecksum = (value) => {
-        if (value.length > 40) {
+    setChecksum = (value, fileName) => {
+        if (value.length > 40 || !mounted) {
             return;
         }
-        this.setState({ checksum: value })
+        mounted && this.setState({ checksum: value, fileName })
     }
 
     isChecksumValid = () => {
@@ -117,7 +123,7 @@ class ChecksumResolver extends React.Component {
     };
 
     addNotification = function (text, success = true) {
-        store.addNotification({
+        mounted && store.addNotification({
             message: text,
             type: success ? "success" : "danger",
             // type: "danger",
@@ -140,7 +146,7 @@ class ChecksumResolver extends React.Component {
             const { success, activationBytes } = result;
 
             if (success !== true) {
-                this.setState({ activationBytes: 'UNKNOWN' });
+                mounted && this.setState({ activationBytes: 'UNKNOWN' });
                 this.addNotification("An error occured while resolving the activation bytes, please check your inputs", false);
                 return;
             }
@@ -148,17 +154,17 @@ class ChecksumResolver extends React.Component {
             if (success === true) {
                 const calculatedChecksum = await AaxHashAlgorithm.CalculateChecksum(activationBytes);
                 if (calculatedChecksum === checksum) {
-                    this.setState({ activationBytes: activationBytes });
+                    mounted && this.setState({ activationBytes: activationBytes });
                     this.addNotification("Successfully resolved the activation bytes");
                     return;
                 }
                 
-                this.setState({ activationBytes: "API ERROR" });
+                mounted && this.setState({ activationBytes: "API ERROR" });
                 this.addNotification("An unexpected error occured while resolving the activation bytes, please try again", false);
 
             }
         } catch (error) {
-            this.setState({ activationBytes: error });
+            mounted && this.setState({ activationBytes: error });
             this.addNotification("An error occured while resolving the activation bytes, please check your inputs", false);
         }
     }
@@ -180,10 +186,9 @@ class ChecksumResolver extends React.Component {
         //     return;
         // }
 
-        this.setState({ fileName: file.name });
         const byteSlice = file.slice(653, 653 + 20);
         const results = this.buf2hex(await byteSlice.arrayBuffer());
-        this.setChecksum(results)
+        this.setChecksum(results, file.name);
         this.requestActivationBytes();
 
     }
@@ -191,13 +196,6 @@ class ChecksumResolver extends React.Component {
     render() {
         const { classes } = this.props;
         const { checksum, activationBytes, fileName } = this.state;
-
-        // const { files, onClick, errors, HiddenFileInput } = useFilePicker({
-        //     maxFileSize: 1000000,
-        //     maxImageWidth: 1000,
-        //     imageQuality: 0.92,
-        //     resizeImage: true
-        //   });
 
         return (
             <Container component="main" maxWidth="md">
