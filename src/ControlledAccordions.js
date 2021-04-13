@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 
 import { Accordion, AccordionDetails, AccordionSummary } from '@material-ui/core';
 
@@ -15,12 +15,6 @@ import FileCopyOutlined from '@material-ui/icons/FileCopyOutlined';
 
 import OutputFormatSelection from './OutputFormatSelection'
 import OSSelector from './OSSelector'
-
-
-import { Radio, RadioGroup } from '@material-ui/core';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
 
 class ControlledAccordions extends React.Component {
     constructor(props) {
@@ -72,11 +66,11 @@ class ControlledAccordions extends React.Component {
         ];
 
         let fileNameWithoutExtension = fileName.split('.')[0];
-        fileNameWithoutExtension = fileNameWithoutExtension == 'input' ? 'output' : fileNameWithoutExtension;
+        fileNameWithoutExtension = fileNameWithoutExtension === 'input' ? 'output' : fileNameWithoutExtension;
 
-        const osMap =  osToBinMaps.filter(x => x.os == operatingSystem)[0];
+        const osMap =  osToBinMaps.filter(x => x.os === operatingSystem)[0];
 
-        const codec = outputFormatCodecMaps.filter(x => x.format == outputFormat)[0].codec;
+        const codec = outputFormatCodecMaps.filter(x => x.format === outputFormat)[0].codec;
         const bin = osMap.cmd;
         const di = osMap.discriminator;
         
