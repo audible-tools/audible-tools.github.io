@@ -25,7 +25,7 @@ import { FilePicker } from '../src/Components'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 import ControlledAccordions from './ControlledAccordions'
-
+import OnlineConverter from "./OnlineConverter";
 import 'react-notifications-component/dist/theme.css'
 
 import ReactNotification from 'react-notifications-component'
@@ -179,7 +179,7 @@ class ChecksumResolver extends React.Component {
         //     return;
         // }
 
-        this.setState({ fileName: file.name });
+        this.setState({ fileName: file.name, file:file });
         const slic = file.slice(653, 653 + 20);
         const results = this.buf2hex(await slic.arrayBuffer());
         this.setChecksum(results)
@@ -189,7 +189,7 @@ class ChecksumResolver extends React.Component {
 
     render() {
         const { classes } = this.props;
-        const { checksum, activationBytes, fileName } = this.state;
+        const { checksum, activationBytes, fileName, file } = this.state;
 
         // const { files, onClick, errors, HiddenFileInput } = useFilePicker({
         //     maxFileSize: 1000000,
@@ -296,6 +296,7 @@ class ChecksumResolver extends React.Component {
                 <ControlledAccordions
                     fileName={fileName}
                     activationBytes={activationBytes}
+                    file ={file}
                 />
                 <Box mt={1}>
                     <this.Copyright />

@@ -4,6 +4,8 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import ChecksumResolver from './ChecksumResolver';
 import ReactNotification from 'react-notifications-component'
+import ForkMeOnGithub from 'fork-me-on-github';
+
 
 import ReactGA from 'react-ga';
 ReactGA.initialize('UA-174657678-1');
@@ -15,7 +17,11 @@ ReactDOM.render(
     <ReactNotification />
 
     </div>
-
+    <ForkMeOnGithub
+      repo="https://github.com/audible-tools/audible-tools.github.io"
+      colorOctocat="black"
+      isPride
+    />
     <ChecksumResolver />
   </div>,
   document.getElementById('root')

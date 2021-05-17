@@ -21,6 +21,7 @@ import { Radio, RadioGroup } from '@material-ui/core';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+import OnlineConverter from "./OnlineConverter";
 
 class ControlledAccordions extends React.Component {
     constructor(props) {
@@ -71,7 +72,7 @@ class ControlledAccordions extends React.Component {
             { os: "osx", cmd: "./ffmpeg", discriminator: '\'' },
         ];
 
-        let fileNameWithoutExtension = fileName.split('.')[0];
+        let fileNameWithoutExtension = fileName.split('.').slice(0, -1).join('.');
         fileNameWithoutExtension = fileNameWithoutExtension == 'input' ? 'output' : fileNameWithoutExtension;
 
         const osMap =  osToBinMaps.filter(x => x.os == operatingSystem)[0];
@@ -89,10 +90,8 @@ class ControlledAccordions extends React.Component {
     }
 
     render() {
-        const { classes } = this.props;
+        const { classes, file, activationBytes} = this.props;
         const { expanded, outputFormat, operatingSystem } = this.state;
-
-
         return (
             <div className={classes.root}>
                 <Accordion expanded={expanded === 'panel2'} onChange={this.handleChange('panel2')}>
@@ -101,10 +100,10 @@ class ControlledAccordions extends React.Component {
                         aria-controls="panel2bh-content"
                         id="panel2bh-header"
                     >
-                        <Typography className={classes.heading}>Command</Typography>
+                        <Typography className={classes.heading}>Command and Convert</Typography>
                         <Typography className={classes.secondaryHeading}>
-                            Generate ffmpeg command
-                </Typography>
+                            Generate ffmpeg command or convert in browser
+                        </Typography>
                     </AccordionSummary>
                     <AccordionDetails style={{ display: 'block' }}>
                         <OutputFormatSelection
@@ -144,6 +143,9 @@ class ControlledAccordions extends React.Component {
                             }}
 
                         />
+                        <OnlineConverter file={file}
+                                         activationBytes={activationBytes}
+                                         outputFormat = {outputFormat}/>
                     </AccordionDetails>
                 </Accordion>
             </div>
