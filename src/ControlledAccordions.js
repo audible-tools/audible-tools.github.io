@@ -67,9 +67,9 @@ class ControlledAccordions extends React.Component {
         ];
 
         const osToBinMaps = [
-            { os: "win", cmd: "ffmpeg.exe", discriminator: '"' },
-            { os: "linux", cmd: "./ffmpeg", discriminator: '\'' },
-            { os: "osx", cmd: "./ffmpeg", discriminator: '\'' },
+            { os: "win", cmd: "ffmpeg.exe", discriminator: '"', separator: '\\', },
+            { os: "linux", cmd: "ffmpeg", discriminator: '\'', separator: '/', },
+            { os: "osx", cmd: "ffmpeg", discriminator: '\'', separator: '/', },
         ];
 
         let fileNameWithoutExtension = fileName.split('.').slice(0, -1).join('.');
@@ -80,9 +80,10 @@ class ControlledAccordions extends React.Component {
         const codec = outputFormatCodecMaps.filter(x => x.format == outputFormat)[0].codec;
         const bin = osMap.cmd;
         const di = osMap.discriminator;
+        const sep = osMap.separator;
         
         return `${bin} -y`
-            + ` -activation_bytes ${activationBytes} -i  ${di}.\\${fileName}${di}`
+            + ` -activation_bytes ${activationBytes} -i  ${di}.${sep}${fileName}${di}`
             + ` -map_metadata 0`
             + ` -id3v2_version 3`
             + ` -codec:a ${codec}`
