@@ -61,9 +61,9 @@ class ControlledAccordions extends React.Component {
         // " works on ps and cmd as discriminator
 
         const outputFormatCodecMaps = [
-            { format: "m4b", codec: "-codec copy" },
-            { format: "flac", codec: "-codec:a flac" },
-            { format: "mp3", codec: "-codec:a libmp3lame" },
+            { format: "m4b", codec: "copy" },
+            { format: "flac", codec: "flac" },
+            { format: "mp3", codec: "libmp3lame" },
         ];
 
         const osToBinMaps = [
@@ -82,13 +82,12 @@ class ControlledAccordions extends React.Component {
         const di = osMap.discriminator;
         const sep = osMap.separator;
         
-        return [
-            `${bin} -y`,
-            `-activation_bytes ${activationBytes}`,
-            `-i  ${di}.${sep}${fileName}${di}`,
-            codec,
-            `${di}${fileNameWithoutExtension}.${outputFormat}${di}`
-        ].join(" ")
+        return `${bin} -y`
+            + ` -activation_bytes ${activationBytes} -i  ${di}.${sep}${fileName}${di}`
+            + ` -map_metadata 0`
+            + ` -id3v2_version 3`
+            + ` -codec:a ${codec}`
+            + ` -vn ${di}${fileNameWithoutExtension}.${outputFormat}${di}`;
     }
 
     render() {
