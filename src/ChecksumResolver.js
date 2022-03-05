@@ -89,7 +89,7 @@ class ChecksumResolver extends React.Component {
                     audible-tools
             </Link>{' '}
                 {new Date().getFullYear()}
-                {'. V 0.2'}
+                {'. V 0.3'}
             </Typography>
         );
     })

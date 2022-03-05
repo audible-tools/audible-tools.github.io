@@ -15,16 +15,16 @@ const downloadFile= (data, outputFileName, outputFormat) => {
 }
 const getCommandAsList = (file, outputFileName, outputFormat, activationBytes) =>{
     const outputFormatCodecMaps = [
-        { format: "m4b", codec: "-c copy" },
-        { format: "flac", codec: "-c:a flac" },
-        { format: "mp3", codec: "-c:a libmp3lame" },
+        { format: "m4b", codec: ["-c","copy"] },
+        { format: "flac", codec: ["-c:a","flac"] },
+        { format: "mp3", codec: ["-c:a","libmp3lame"] },
     ];
     const codec = outputFormatCodecMaps.filter(x => x.format === outputFormat)[0].codec;
     const filename = file.name;
     return [`-y`,
         '-activation_bytes', activationBytes,
         '-i', filename,
-        codec,
+        ...codec,
         outputFileName
     ];
 }
