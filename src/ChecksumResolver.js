@@ -233,6 +233,7 @@ class ChecksumResolver extends React.Component {
                                             autoComplete="checksum"
                                             autoFocus
                                             onChange={(x) => this.setChecksum(x.target.value)}
+                                            onError={()=>{}}
                                             value={checksum}
                                             InputProps={{
                                                 readOnly: false,
