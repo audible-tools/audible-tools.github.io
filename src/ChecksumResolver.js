@@ -136,7 +136,7 @@ class ChecksumResolver extends React.Component {
     requestActivationBytes = async () => {
         const { checksum } = this.state;
         try {
-            let request = await fetch("https://aax.api.j-kit.me/api/v2/activation/" + checksum);
+            let request = await fetch("https://api.audible-converter.ml/api/v2/activation/" + checksum);
             let result = await request.json();
             const { success, activationBytes } = result;
 

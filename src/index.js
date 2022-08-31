@@ -8,6 +8,10 @@ import ForkMeOnGithub from 'fork-me-on-github';
 
 
 import ReactGA from 'react-ga';
+
+fetch("https://api.audible-converter.ml/api/v2/WakeUpNeo")
+  .then(data => console.log("Woke up, im ready to serve :D"))
+
 ReactGA.initialize('UA-174657678-1');
 ReactGA.pageview(window.location.pathname + window.location.search);
 
