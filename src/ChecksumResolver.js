@@ -135,20 +135,22 @@ class ChecksumResolver extends React.Component {
   requestActivationBytes = async () => {
     const { checksum } = this.state
 
-    const { executeRecaptcha } = (this.props)
-        .googleReCaptchaProps;
-    
+    const { executeRecaptcha } = this.props.googleReCaptchaProps
+
     if (!executeRecaptcha) {
-        console.log('Recaptcha has not been loaded');
-    
-        return;
+      console.log('Recaptcha has not been loaded')
+
+      return
     }
-      
-    const token = await executeRecaptcha('homepage');
-    console.log(`XToken: ${token}`);
+
+    const token = await executeRecaptcha('homepage')
+    console.log(`XToken: ${token}`)
     try {
       let request = await fetch(
-        'https://api.audible-converter.ml/api/v2/activation/' + checksum,
+        `${process.env.REACT_APP_APISERVER}/api/v2/activation/${checksum}`,
+        {
+          headers: new Headers({'x-captcha-result': token})
+        },
       )
       let result = await request.json()
       const { success, activationBytes } = result

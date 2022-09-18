@@ -12,7 +12,7 @@ import {
   GoogleReCaptcha,
 } from 'react-google-recaptcha-v3'
 
-fetch('https://api.audible-converter.ml/api/v2/WakeUpNeo').then((data) =>
+fetch(`${process.env.REACT_APP_APISERVER}/api/v2/WakeUpNeo`).then((data) =>
   console.log('Woke up, im ready to serve :D'),
 )
 
