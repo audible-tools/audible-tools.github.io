@@ -14,8 +14,7 @@ import {
 
 WakeUp();
 
-ReactGA.initialize('UA-174657678-1')
-ReactGA.pageview(window.location.pathname + window.location.search)
+WakeUp();
 
 ReactDOM.render(
   <div>
@@ -39,6 +38,7 @@ ReactDOM.render(
   document.getElementById('root'),
 )
 
+
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
@@ -47,7 +47,7 @@ serviceWorker.unregister()
 
 async function WakeUp() {
   try{
-    await fetch(`${process.env.REACT_APP_APISERVER}/api/v2/WakeUpNeo`)
+    await fetch("https://api.audible-converter.ml/api/v2/WakeUpNeo")
     console.log("Woke up")
   }catch(ex){
     console.log("Error occured: "+ ex)
