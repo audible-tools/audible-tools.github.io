@@ -68,6 +68,7 @@ class ChecksumResolver extends React.Component {
     this.state = {
       checksum: '',
       fileName: 'input.aax',
+      activationBytes: ''
     }
   }
 
