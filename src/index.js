@@ -12,9 +12,7 @@ import {
   GoogleReCaptcha,
 } from 'react-google-recaptcha-v3'
 
-fetch(`${process.env.REACT_APP_APISERVER}/api/v2/WakeUpNeo`).then((data) =>
-  console.log('Woke up, im ready to serve :D'),
-)
+WakeUp();
 
 ReactGA.initialize('UA-174657678-1')
 ReactGA.pageview(window.location.pathname + window.location.search)
@@ -45,3 +43,13 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister()
+
+
+async function WakeUp() {
+  try{
+    await fetch(`${process.env.REACT_APP_APISERVER}/api/v2/WakeUpNeo`)
+    console.log("Woke up")
+  }catch(ex){
+    console.log("Error occured: "+ ex)
+  }
+}
