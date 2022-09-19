@@ -34,6 +34,7 @@ import {
   withGoogleReCaptcha,
 } from 'react-google-recaptcha-v3'
 
+
 const useStyles = (theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -68,8 +69,22 @@ class ChecksumResolver extends React.Component {
     this.state = {
       checksum: '',
       fileName: 'input.aax',
-      activationBytes: ''
+      activationBytes: '',
     }
+  }
+
+  componentDidMount() {
+    let path = window.location.pathname;
+    let checksumMatch = window.location.pathname.match(/([a-fA-F0-9]{40})/)
+    if(!checksumMatch) return;
+    let checksum = checksumMatch[1];
+    // this.setState({});
+    this.setChecksum(checksum);
+    this.requestActivationBytes(checksum);
+    // let { id } = this.props.params
+    // // this.fetchData(id)
+    // console.log(id)
+    // debugger;
   }
 
   DarkerDisabledTextField = withStyles({
@@ -133,15 +148,17 @@ class ChecksumResolver extends React.Component {
     })
   }
 
-  requestActivationBytes = async () => {
-    const { checksum } = this.state
+  requestActivationBytes = async (checksumX) => {
+    const checksum = checksumX ? checksumX : this.state.checksum
 
-    const { executeRecaptcha } = this.props.googleReCaptchaProps
+    window.history.pushState('page2', 'Title', '/' + checksum);
+   
+    let executeRecaptcha = this.props.googleReCaptchaProps.executeRecaptcha
 
-    if (!executeRecaptcha) {
+    while(!executeRecaptcha) {
       console.log('Recaptcha has not been loaded')
-
-      return
+      executeRecaptcha = this.props.googleReCaptchaProps?.executeRecaptcha
+      await new Promise(r => setTimeout(r, 100));
     }
 
     const token = await executeRecaptcha('homepage')
@@ -150,7 +167,7 @@ class ChecksumResolver extends React.Component {
       let request = await fetch(
         `${process.env.REACT_APP_APISERVER}/api/v2/activation/${checksum}`,
         {
-          headers: new Headers({'x-captcha-result': token})
+          headers: new Headers({ 'x-captcha-result': token }),
         },
       )
       let result = await request.json()
@@ -218,6 +235,9 @@ class ChecksumResolver extends React.Component {
   render() {
     const { classes } = this.props
     const { checksum, activationBytes, fileName, file } = this.state
+    // const id = this.props.match.params.id;
+    // let { id } = useParams();
+    // console.log("IDDDDDD"+ id);
 
     return (
       <Container component="main" maxWidth="md">
@@ -326,3 +346,4 @@ class ChecksumResolver extends React.Component {
 }
 
 export default withGoogleReCaptcha(withStyles(useStyles)(ChecksumResolver))
+
