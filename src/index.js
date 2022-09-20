@@ -12,9 +12,11 @@ import {
   GoogleReCaptcha,
 } from 'react-google-recaptcha-v3'
 
-WakeUp();
 
 WakeUp();
+
+ReactGA.initialize('UA-174657678-1')
+ReactGA.pageview(window.location.pathname + window.location.search)
 
 ReactDOM.render(
   <div>
