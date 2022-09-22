@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 
 import { Accordion, AccordionDetails, AccordionSummary } from '@material-ui/core';
 
@@ -11,16 +11,10 @@ import IconButton from '@material-ui/core/IconButton';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import FileCopyOutlined from '@material-ui/icons/FileCopyOutlined';
 
-// import {ExpandMoreIcon, FileCopyOutlined} from '@material-ui/icons';
-
 import OutputFormatSelection from './OutputFormatSelection'
 import OSSelector from './OSSelector'
 
 
-import { Radio, RadioGroup } from '@material-ui/core';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
 import OnlineConverter from "./OnlineConverter";
 
 class ControlledAccordions extends React.Component {

@@ -12,8 +12,7 @@ import {
   GoogleReCaptcha,
 } from 'react-google-recaptcha-v3'
 
-
-WakeUp();
+WakeUp()
 
 ReactGA.initialize('UA-174657678-1')
 ReactGA.pageview(window.location.pathname + window.location.search)
@@ -40,18 +39,21 @@ ReactDOM.render(
   document.getElementById('root'),
 )
 
-
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister()
 
-
 async function WakeUp() {
-  try{
-    await fetch("https://api.audible-converter.ml/api/v2/WakeUpNeo")
-    console.log("Woke up")
-  }catch(ex){
-    console.log("Error occured: "+ ex)
+  while (true) {
+    let timeout = 1000 * 10; // 10 seconds
+    try {
+      await fetch('https://api.audible-converter.ml/api/v2/WakeUpNeo')
+      console.log('Woke up')
+    } catch (ex) {
+      console.log('Error occured: ' + ex)
+      timeout = 500; // 0.5 seconds
+    }
+    await new Promise((r) => setTimeout(r, timeout))
   }
 }
