@@ -46,7 +46,7 @@ serviceWorker.unregister()
 
 async function WakeUp() {
   while (true) {
-    let timeout = 1000 * 10; // 10 seconds
+    let timeout = 1000 * 60; // 60 seconds
     try {
       await fetch('https://api.audible-converter.ml/api/v2/WakeUpNeo')
       console.log('Woke up')
