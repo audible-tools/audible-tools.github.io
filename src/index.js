@@ -48,7 +48,7 @@ async function WakeUp() {
   while (true) {
     let timeout = 1000 * 60; // 60 seconds
     try {
-      await fetch('https://api.audible-converter.ml/api/v2/WakeUpNeo')
+      await fetch('https://aaxapiserverfunction20220831180001.azurewebsites.net/api/v2/WakeUpNeo')
       console.log('Woke up')
     } catch (ex) {
       console.log('Error occured: ' + ex)
