@@ -337,7 +337,7 @@ class ChecksumResolver extends React.Component {
                 <img
                   style={{ marginLeft: -10, width: 50 }}
                   // src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png"
-                  src="https://pngimg.com/uploads/paypal/paypal_PNG7.png"
+                  src="./paypal_PNG7.png"
                   alt="PayPal"
                 />
               </Button>
